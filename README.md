@@ -6,6 +6,6 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## stuffs
 
-[] test implementing filters on just an array
-[] restyle said filters
-[] dashboard cards? **landingpageComponent**
+- [ ] test implementing filters on just an array
+- [ ] restyle said filters
+- [ ] dashboard cards? **landingpageComponent**
