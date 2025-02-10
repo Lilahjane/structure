@@ -1,0 +1,53 @@
+<!--game plan create filters for the following-->
+<!--{ value: 'not spicy', itemname: 'steak', filter1: 5, filter2: 38, filter3: 30 }-->
+<!--value spicelevel dropdown-->
+<!--itemname search-->
+<!--filter 1: int-->
+<!--filter 2: int-->
+<!--filter 3: int-->
+<!--figure out how to dynamically reload cards with search queries-->
+<!---->
+<!--auto complete-->
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>itemname</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            @for (option of filteredOptions | async; track option) {
+            <mat-option [value]="option">{{option}}</mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+
+
+<!--dropdowns-->
+<mat-form-field>
+    <mat-label>Spice Level</mat-label><!--this is value-->
+    <mat-select>
+        <mat-option value="not spicy">Not Spicy</mat-option>
+        <mat-option value="mild">Mild</mat-option>
+        <mat-option value="medium">Medium</mat-option>
+        <mat-option value="hot">Hot</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<!--min max sliders-->
+<mat-label>filter 1</mat-label><!--this is filter1-->
+<mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+    <input value="300" matSliderStartThumb>
+    <input value="400" matSliderEndThumb>
+</mat-slider>
+
+<mat-label>filter 2</mat-label>
+<mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+    <input value="300" matSliderStartThumb>
+    <input value="400" matSliderEndThumb>
+</mat-slider>
+
+<mat-label>filter 3</mat-label>
+<mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+    <input value="300" matSliderStartThumb>
+    <input value="400" matSliderEndThumb>
+</mat-slider>
