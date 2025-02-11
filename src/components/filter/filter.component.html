@@ -8,32 +8,55 @@
 <!--figure out how to dynamically reload cards with search queries-->
 <!---->
 <!--auto complete-->
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-        <mat-label>itemname</mat-label>
-        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
-            [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-            @for (option of filteredOptions | async; track option) {
-            <mat-option [value]="option">{{option}}</mat-option>
-            }
-        </mat-autocomplete>
-    </mat-form-field>
-</form>
+<div class="body">
+<div class="header">
+    <mat-card class="card" appearance="outlined">
+    <img  mat-card-image src="https://picsum.photos/1280/720" alt="header">
+</mat-card>
+</div>
+<div class="test">
+    <mat-accordion>
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+            <mat-panel-title> filters 1 </mat-panel-title>
+            <mat-panel-description> figure out how to add a toolbar V thing to toolbar this instead of the expantion panel being seen </mat-panel-description>
+          </mat-expansion-panel-header>
 
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>itemname</mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    @for (option of filteredOptions | async; track option) {
+                    <mat-option [value]="option">{{option}}</mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+        
+        
+        <!--dropdowns-->
+        <mat-form-field>
+            <mat-label>Spice Level</mat-label><!--this is value-->
+            <mat-select>
+                <mat-option value="not spicy">Not Spicy</mat-option>
+                <mat-option value="mild">Mild</mat-option>
+                <mat-option value="medium">Medium</mat-option>
+                <mat-option value="hot">Hot</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
 
-<!--dropdowns-->
-<mat-form-field>
-    <mat-label>Spice Level</mat-label><!--this is value-->
-    <mat-select>
-        <mat-option value="not spicy">Not Spicy</mat-option>
-        <mat-option value="mild">Mild</mat-option>
-        <mat-option value="medium">Medium</mat-option>
-        <mat-option value="hot">Hot</mat-option>
-    </mat-select>
-</mat-form-field>
-
-<!--min max sliders-->
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+          <mat-expansion-panel-header>
+            <mat-panel-title> Self aware panel </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState() ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <<!--min max sliders-->
 <mat-label>filter 1</mat-label><!--this is filter1-->
 <mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
     <input value="300" matSliderStartThumb>
@@ -51,3 +74,12 @@
     <input value="300" matSliderStartThumb>
     <input value="400" matSliderEndThumb>
 </mat-slider>
+        </mat-expansion-panel>
+      </mat-accordion>
+</div>
+
+    
+
+
+
+</div>
